@@ -1,0 +1,11 @@
+nav.navbar, footer {
+    width: 100vw !important;
+    left: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  /* Fix for footer and navbar when content is less */
+  footer {
+    margin-top: auto !important;
+  }
