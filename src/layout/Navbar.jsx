@@ -1,14 +1,27 @@
 import React from "react";
-import "./Layout.css";
-import "../assets/css/styles.css";
+import "../assets/js/custom.js";
+import "../assets/js/mono.js";
+import { useState } from "react";
+// import "../assets/css/styles.css";
 function Navbar()
 {
+  const [isOpen, setIsOpen] = useState(false);
+  
+    const toggleNotifications = (event) => {
+      console.log("Notification Button Cliked ! ");
+      event.stopPropagation(); // Prevent event bubbling
+      setIsOpen(!isOpen);
+      console.log(isOpen);
+    }
+
     return(
         <>
+       
           <header className="main-header" id="header">
             <nav className="navbar navbar-expand-lg navbar-light" id="navbar">
               
               <button id="sidebar-toggler" className="sidebar-toggle">
+              <i className="mdi mdi-menu"></i>
                 <span className="sr-only">Toggle navigation</span>
               </button>
 
@@ -45,18 +58,21 @@ function Navbar()
 
                 </div>
 
-                {/* <ul className="nav navbar-nav">
+                <ul className="nav navbar-nav">
                   
                   <li className="custom-dropdown">
-                    <a className="offcanvas-toggler active custom-dropdown-toggler" data-offcanvas="contact-off" href="javascript:" >
+                    <a className="offcanvas-toggler active custom-dropdown-toggler" data-offcanvas="contact-off" >
                       <i className="mdi mdi-contacts icon"></i>
                     </a>
                   </li>
                   <li className="custom-dropdown">
-                    <button className="notify-toggler custom-dropdown-toggler">
+                 
+                     <button className="notify-toggler custom-dropdown-toggler" onClick={toggleNotifications}>
+
                       <i className="mdi mdi-bell-outline icon"></i>
                       <span className="badge badge-xs rounded-circle">21</span>
                     </button>
+                    {/* {isOpen && (
                     <div className="dropdown-notify">
 
                       <header>
@@ -70,7 +86,7 @@ function Navbar()
                         </div>
                       </header>
 
-                      <div className="" data-simplebar style="height: 325px;">
+                      <div className="" data-simplebar style={{height: "325px"}}>
                         <div className="tab-content" id="myTabContent">
 
                           <div className="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tabs">
@@ -78,7 +94,7 @@ function Navbar()
                             <div className="media media-sm bg-warning-10 p-4 mb-0">
                               <div className="media-sm-wrapper">
                                 <a href="user-profile.html">
-                                  <img src="images/user/user-sm-02.jpg" alt="User Image"/>
+                                  <img src="/assets/images/ProfilePic.png" alt="User Image"/>
                                 </a>
                               </div>
                               <div className="media-body">
@@ -302,15 +318,222 @@ function Navbar()
                       <footer className="border-top dropdown-notify-footer">
                         <div className="d-flex justify-content-between align-items-center py-2 px-4">
                           <span>Last updated 3 min ago</span>
-                          <a id="refress-button" href="javascript:" className="btn mdi mdi-cached btn-refress"></a>
+                          <a id="refress-button" className="btn mdi mdi-cached btn-refress"></a>
                         </div>
                       </footer>
-                    </div>
+                    </div>)} */}
+                    
+
+
+                    {isOpen && (
+        <div className="dropdown-notify">
+          <header>
+            <div className="nav nav-underline" id="nav-tab" role="tablist">
+              <span className="nav-item nav-link active">All (5)</span>
+              <span className="nav-item nav-link">Msgs (4)</span>
+              <span className="nav-item nav-link">Others (3)</span>
+            </div>
+          </header>
+          <div className="" style={{ height: "325px", overflowY: "auto" }}>
+            <div className="tab-content">
+              {/* All Notifications Tab */}
+              <div className="tab-pane active">
+                {/* Notification Item 1 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper">
+                    <a href="user-profile.html">
+                      <img src="/assets/images/ProfilePic.png" alt="User Image" />
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">John Doe</span>
+                      <span className="discribe">Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.</span>
+                      <span className="time"><time>Just now</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Notification Item 2 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper bg-primary">
+                    <a href="user-profile.html">
+                      <i className="mdi mdi-calendar-check-outline"></i>
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">New event added</span>
+                      <span className="discribe">1/3/2014 (1pm - 2pm)</span>
+                      <span className="time"><time>10 min ago...</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Notification Item 3 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper">
+                    <a href="user-profile.html">
+                      <img src="images/user/user-sm-03.jpg" alt="User Image" />
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Sagge Hudson</span>
+                      <span className="discribe">On disposal of as landlord Afraid at highly months do things on at.</span>
+                      <span className="time"><time>1 hrs ago</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Notification Item 4 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper bg-info-dark">
+                    <a href="user-profile.html">
+                      <i className="mdi mdi-account-multiple-check"></i>
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Add request</span>
+                      <span className="discribe">Add Dany Jones as your contact.</span>
+                      <div className="buttons">
+                        <a href="#" className="btn btn-sm btn-success shadow-none text-white">Accept</a>
+                        <a href="#" className="btn btn-sm shadow-none">Delete</a>
+                      </div>
+                      <span className="time"><time>6 hrs ago</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Notification Item 5 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper bg-info">
+                    <a href="user-profile.html">
+                      <i className="mdi mdi-playlist-check"></i>
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Task complete</span>
+                      <span className="discribe">Afraid at highly months do things on at.</span>
+                      <span className="time"><time>1 hrs ago</time></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Messages Tab */}
+              <div className="tab-pane">
+                {/* Message Item 1 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper">
+                    <a href="user-profile.html">
+                      <img src="images/user/user-sm-01.jpg" alt="User Image" />
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Selena Wagner</span>
+                      <span className="discribe">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                      <span className="time"><time>15 min ago...</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Message Item 2 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper">
+                    <a href="user-profile.html">
+                      <img src="images/user/user-sm-03.jpg" alt="User Image" />
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Sagge Hudson</span>
+                      <span className="discribe">On disposal of as landlord Afraid at highly months do things on at.</span>
+                      <span className="time"><time>1 hrs ago...</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Message Item 3 */}
+                <div className="media media-sm bg-warning-10 p-4 mb-0">
+                  <div className="media-sm-wrapper">
+                    <a href="user-profile.html">
+                      <img src="images/user/user-sm-02.jpg" alt="User Image" />
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">John Doe</span>
+                      <span className="discribe">Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.</span>
+                      <span className="time"><time>Just now</time></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Others Tab */}
+              <div className="tab-pane">
+                {/* Other Notification Item 1 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper bg-primary">
+                    <a href="user-profile.html">
+                      <i className="mdi mdi-calendar-check-outline"></i>
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">New event added</span>
+                      <span className="discribe">1/3/2014 (1pm - 2pm)</span>
+                      <span className="time"><time>10 min ago...</time></span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Other Notification Item 2 */}
+                <div className="media media-sm p-4 mb-0">
+                  <div className="media-sm-wrapper bg-info-dark">
+                    <a href="user-profile.html">
+                      <i className="mdi mdi-account-multiple-check"></i>
+                    </a>
+                  </div>
+                  <div className="media-body">
+                    <a href="user-profile.html">
+                      <span className="title mb-0">Add request</span>
+                      <span className="discribe">Add Dany Jones as your contact.</span>
+                      <div className="buttons">
+                        <a href="#" className="btn btn-sm btn-success shadow-none text-white">Accept</a>
+                        <a href="#" className="btn btn-sm shadow-none">Delete</a>
+                      </div>
+                      <span className="time"><time>6 hrs ago</time></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer className="border-top dropdown-notify-footer">
+            <div className="d-flex justify-content-between align-items-center py-2 px-4">
+              <span>Last updated 3 min ago</span>
+              <a id="refress-button" className="btn mdi mdi-cached btn-refress"></a>
+            </div>
+          </footer>
+        </div>
+      )}
+
+
+
+
+
+
+
                   </li>
                  
                   <li className="dropdown user-menu">
                     <button className="dropdown-toggle nav-link" data-toggle="dropdown">
-                      <img src="images/user/user-xs-01.jpg" className="user-image rounded-circle" alt="User Image" />
+                      <img src="src/assets/images/ProfilePic.png" className="user-image rounded-circle" alt="Usr" />
                       <span className="d-none d-lg-inline-block">John Doe</span>
                     </button>
                     <ul className="dropdown-menu dropdown-menu-right">
@@ -344,7 +567,7 @@ function Navbar()
                       </li>
                     </ul>
                   </li>
-                </ul> */}
+                </ul>
 
 
 

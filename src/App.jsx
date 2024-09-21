@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import { Home } from "./Home";
 import React from 'react'
- 
+import "./assets/css/styles.css";
  export const App = () => {
    return (
     <Router>

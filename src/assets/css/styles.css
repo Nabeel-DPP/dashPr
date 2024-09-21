@@ -12352,6 +12352,8 @@
    margin-bottom: 0;
    padding: 0;
    transition: box-shadow 0.2s linear;
+   /* margin-left: 16rem !important; */
+   
  }
  
  /* Navbar */
